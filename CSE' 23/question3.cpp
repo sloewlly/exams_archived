@@ -80,13 +80,10 @@ class Society {
         return count;
     }
 
-    std::vector<int> sorthBirthYear() {
-        std::vector<int> years;
-        for (const auto& member : memberList) {
-            years.push_back(member->getBirthYear());
-        }
-        std::sort(years.begin(), years.end());
-        return years;
+    std::vector<int> sortBirthYear() {
+        std::sort(memberList.begin(), memberList.end(), [](Member* a, Member* b) {
+            return a->getBirthYear() > b->getBirthYear(); 
+        });
     }
 
     int aveMentorYearOfBirth() {
@@ -119,8 +116,8 @@ int main() {
     Society society("society1");
     society.addMember(&mentor1);
     society.addMember(&mentor2);
-    society.addMember (&coordinator1);
-    society.addMember (&coordinator2);
+    society.addMember(&coordinator1);
+    society.addMember(&coordinator2);
 
     society.describe ();
     int numberOfCoordinators = society.countCoordinator();
