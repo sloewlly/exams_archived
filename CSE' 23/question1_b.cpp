@@ -18,7 +18,7 @@ class Student {
     int studentID;
     Course course;
     public:
-    Student(std::string name, int id, Course course) : name(name), studentID(id), course(course) {}
+    Student(std::string name, int id, int CourseCode, std::string CourseName) : name(name), studentID(id), course(CourseCode, CourseName) {}
     void describe() {
         std::cout << "Student name: " << name << std::endl;
         std::cout << "Student ID: " << studentID << std::endl;
@@ -27,8 +27,6 @@ class Student {
 };
 
 int main() {
-    Course myCourse(101, "Programming - 2");
-    Student myStudent("Elijah McCowatt", 17246, myCourse);
-
+    Student myStudent("Elijah McCowatt", 17246, 101, "Programming - 2");
     myStudent.describe();
 }
