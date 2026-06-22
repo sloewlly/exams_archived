@@ -18,7 +18,7 @@ class Device {
     double price;
     Manufacturer manufacturer;
     public:
-    Device(std::string name, double price, Manufacturer manufacturer) : name(name), price(price), manufacturer(manufacturer) {}
+    Device(std::string name, double price, int id, std::string location) : name(name), price(price), manufacturer(id, location) {}
     void describe() {
         std::cout << "Product name: " << name << " - " << "Price: $" << price << std::endl;
         manufacturer.describe();
@@ -26,8 +26,7 @@ class Device {
 };
 
 int main() {
-    Manufacturer myManufacturer(101, "United States");
-    Device myDevice("Computer mouse", 10.99f, myManufacturer);
+    Device myDevice("Computer mouse", 10.99f, 101, "United States");
 
     myDevice.describe();
 }
